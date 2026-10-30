@@ -63,15 +63,10 @@ Tested on a MacBook Air M2 (Apple Silicon) with macOS 26.
 
 <ins>**1. Install the tools**</ins>
 
-- Command Line Tools: run `xcode-select --install` (you do not need full Xcode).
-- Homebrew from https://brew.sh. Then run `brew install cmake ninja`.
-- Vulkan SDK, for example 1.4.363.0:
-  https://sdk.lunarg.com/sdk/download/1.4.363.0/mac/vulkansdk-macos-1.4.363.0.zip
-  (other versions are on https://vulkan.lunarg.com/sdk/home#mac). The archive is about 400 MB,
-  if the download is very slow, try a VPN. Unzip the archive and run the installer. In the installer,
-  make sure "System Global Installation" is selected. Then you do not need to set any environment variables.
-- Or, if the SDK download is too slow, install Vulkan with Homebrew instead of the SDK:
-  `brew install vulkan-headers vulkan-loader molten-vk shaderc vulkan-validationlayers`
+- Command Line Tools: `xcode-select --install` (full Xcode is not needed).
+- [Homebrew](https://brew.sh), then `brew install cmake ninja`.
+- Vulkan SDK: download [vulkansdk-macos-1.4.363.0.zip](https://sdk.lunarg.com/sdk/download/1.4.363.0/mac/vulkansdk-macos-1.4.363.0.zip), unzip it and run the installer. Make sure "System Global Installation" is selected, then you don't need any environment variables. The file is about 400 MB, if it downloads too slowly, try a VPN. Other versions are on https://vulkan.lunarg.com/sdk/home#mac
+- Or skip the SDK and install Vulkan with Homebrew: `brew install vulkan-headers vulkan-loader molten-vk shaderc vulkan-validationlayers`
 
 <ins>**2. Build and run**</ins>
 
