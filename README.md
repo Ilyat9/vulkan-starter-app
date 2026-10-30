@@ -9,9 +9,7 @@ This project uses C++20 standard and thus requires either of those compilers:
 - Clang 10
 - Microsoft Visual Studio 2019
 
-This is officially tested on *Windows* and *GNU/Linux platforms*, no *macOS* support yet.
-If you have a working macOS solution of this code, consider submitting a PR so others
-can build this example code without a hassle!
+This is officially tested on *Windows*, *GNU/Linux platforms and macOS (Apple Silicon)*
 
 <ins>**1. Downloading the repository**</ins>
 
@@ -58,6 +56,41 @@ For other configurations output subdirectory is set to `vulkan-starter-app`.
 Project root is where this README file resides. Otherwise, the
 code responsible for loading shaders or other resources from files will fail,
 because relative paths are used.
+
+### macOS
+
+Tested on a MacBook Air M2 (Apple Silicon) with macOS 26.
+
+<ins>**1. Install the tools**</ins>
+
+- Command Line Tools: run `xcode-select --install` (you do not need full Xcode).
+- Homebrew from https://brew.sh. Then run `brew install cmake ninja`.
+- Vulkan SDK, for example 1.4.363.0:
+  https://sdk.lunarg.com/sdk/download/1.4.363.0/mac/vulkansdk-macos-1.4.363.0.zip
+  (other versions are on https://vulkan.lunarg.com/sdk/home#mac). The archive is about 400 MB,
+  if the download is very slow, try a VPN. Unzip the archive and run the installer. In the installer,
+  make sure "System Global Installation" is selected. Then you do not need to set any environment variables.
+- Or, if the SDK download is too slow, install Vulkan with Homebrew instead of the SDK:
+  `brew install vulkan-headers vulkan-loader molten-vk shaderc vulkan-validationlayers`
+
+<ins>**2. Build and run**</ins>
+
+```bash
+cmake --preset debug
+cmake --build build-debug --parallel
+./build-debug/vulkan-starter-app
+```
+
+If CMake cannot find Ninja, use `cmake --preset debug -G "Unix Makefiles"` instead.
+
+If you installed Vulkan with Homebrew, run this in the same terminal before starting the program,
+otherwise it crashes:
+
+```bash
+export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib
+```
+
+You may see `Validation Error` or `[mvk-error]` messages in the terminal and a pink window, this is normal.
 
 ### Compiling shaders
 
